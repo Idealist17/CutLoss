@@ -34,6 +34,12 @@ Sepolia address:
 - Ethereum 主网 RPC（用于分叉测试与主网部署） & Sepolia RPC（用于测试网部署）
 - 部署私钥
 
+### 安装依赖
+
+```bash
+forge install
+```
+
 ### 编译
 
 ```bash

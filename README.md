@@ -6,17 +6,17 @@ Sepolia address:
   - SwapRouter: 0xEb8dF084Fc5F8423c3085d108fbe3E0532edc8b7
 ---
 
-一个基于 Uniswap V3 的去中心化 WETH 止损保护系统。用户可以存入 WETH 并设置止损价格。当 ETH 价格跌破阈值时，keeper 可以执行订单，将 WETH 交换为 USDC 并获得赏金。
+一个双预言机喂价的去中心化 ETH 止损保护系统。用户可以存入 ETH 并设置止损价格。当 ETH 价格跌破阈值时，keeper 可以执行订单，将 ETH 交换为 USDC 并获得赏金。
 
 ## 功能特性
 
-- **止损保护**：当价格跌破用户设定的止损线时，自动将 WETH 兑换为 USDC。
+- **止损保护**：当价格跌破用户设定的止损线时，自动将 ETH 兑换为 USDC。
 - **Keeper 激励机制**：Keeper 执行有效止损订单可获得一定比例的赏金。
 - **双预言机安全机制**：
   - 主预言机：Chainlink 数据喂价（价格 < 止损价触发）。
   - 辅预言机（交叉验证）：Uniswap V3 TWAP（时间加权平均价格）防止闪电贷攻击或预言机操控。
 - **可升级性**：
-  - 采用 UUPS（Universal Upgradeable Proxy Standard）代理升级标准以支持未来迭代。
+  - 采用 UUPS 代理升级标准以支持未来迭代。
   - 包含 `uint256[50] private __gap` 以防止升级期间的存储冲突。
 - **紧急暂停**：Owner 可在紧急情况下暂停合约。
 
@@ -27,12 +27,6 @@ Sepolia address:
 - `FullMath.sol` & `TickMath.sol`：Uniswap V3 计算使用的数学库。
 
 ## 部署方式
-
-### 前置准备
-
-- Foundry
-- Ethereum 主网 RPC（用于分叉测试与主网部署） & Sepolia RPC（用于测试网部署）
-- 部署私钥
 
 ### 安装依赖
 
